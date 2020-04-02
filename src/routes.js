@@ -1,7 +1,18 @@
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import React from 'react'; //Necessario para utilizar JSX
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import Main from '~/pages/Main';
+const AppStack = createStackNavigator();
 
-const Routes = createAppContainer(createSwitchNavigator({ Main }));
+//Pages
+import Home from './pages/Main';
 
-export default Routes;
+export default function Routes() {
+    return (
+        <NavigationContainer>
+            <AppStack.Navigator screenOptions={{ headerShown: false }}>
+                <AppStack.Screen name='Home' component={Home} />
+            </AppStack.Navigator>
+        </NavigationContainer>
+    );
+}
